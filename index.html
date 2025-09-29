@@ -11,17 +11,51 @@
       color: #333;
       text-align: center;
       padding: 20px;
+      margin: 0;
+      padding-bottom: 60px; /* espaço pro rodapé fixo */
     }
     h1 {
       margin-bottom: 20px;
     }
+
+    /* Estilo das abas */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .tab-button {
+      background: #e0e0e0;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .tab-button.active {
+      background: #0066cc;
+      color: white;
+    }
+
+    /* Conteúdo das abas */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Cards */
     .link-card {
       background: white;
       border-radius: 12px;
       padding: 15px;
-      margin: 10px 0;
+      margin: 10px auto;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       transition: transform 0.2s;
+      max-width: 400px;
     }
     .link-card:hover {
       transform: scale(1.03);
@@ -37,70 +71,115 @@
       font-size: 14px;
       color: #666;
     }
+
+    /* Rodapé fixo */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #f0f0f0;
+      padding: 10px;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #ddd;
+      text-align: center;
+    }
+    footer a {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <h1>Guia de Links</h1>
 
-  <div class="link-card">
-    <a href="https://impvalores.vercel.app/" target="_blank">📊 Importar Valores</a>
-    <div class="description">Use para preparar a planilha para importar no sistema</div>
+  <!-- Botões das Abas -->
+  <div class="tabs">
+    <button class="tab-button active" onclick="openTab('esocial')">eSocial</button>
+    <button class="tab-button" onclick="openTab('sim')">SIM</button>
+    <button class="tab-button" onclick="openTab('outros')">Outros</button>
   </div>
 
-  <div class="link-card">
-    <a href="https://buscacpf.vercel.app/" target="_blank">🔍 Busca CPF</a>
-    <div class="description">Use para buscar XML com um CPF</div>
+  <!-- Conteúdo da Aba eSocial -->
+  <div id="esocial" class="tab-content active">
+    <div class="link-card">
+      <a href="https://buscacpf.vercel.app/" target="_blank">🔍 Busca CPF Esocial</a>
+      <div class="description">Use para buscar XML com um CPF</div>
+    </div>
+    <div class="link-card">
+      <a href="https://esocialseparador.vercel.app/" target="_blank">📂 Separador eSocial</a>
+      <div class="description">Use para separar os XML de um arquivo ZIP</div>
+    </div>
   </div>
 
-  <div class="link-card">
-    <a href="https://esocialseparador.vercel.app/" target="_blank">📂 Separador eSocial</a>
-    <div class="description">Use para separar os XML de um arquivo ZIP</div>
+  <!-- Conteúdo da Aba SIM -->
+  <div id="sim" class="tab-content">
+    <div class="link-card">
+      <a href="https://meuaf.vercel.app/" target="_blank">📑 AF x FP SIM</a>
+      <div class="description">Use para ver os valores entre AF e FP</div>
+    </div>
+    <div class="link-card">
+      <a href="https://passousim.vercel.app/" target="_blank">✅ Passou Sim</a>
+      <div class="description">Use para ver quem passou o sim</div>
+    </div>
+    <div class="link-card">
+      <a href="https://site-tce.vercel.app/" target="_blank">🏛️ Itens SIM</a>
+      <div class="description">Use para pegar código de item remuneratório</div>
+    </div>
+    <div class="link-card">
+      <a href="https://geradorzipsim.vercel.app/" target="_blank">🏛️ Gerar Zip pro SIM</a>
+      <div class="description">Use para gerar o zip pra ser enviado direto ao TCE</div>
+    </div>
+    <div class="link-card">
+      <a href="https://buscacpfsim.vercel.app/" target="_blank">🏛️ Buscar CPF SIM</a>
+      <div class="description">Buscar CPF ou trecho em vários arquivos de uma só vez.</div>
+    </div>
   </div>
 
-  <div class="link-card">
-    <a href="https://comparavalores.vercel.app/" target="_blank">⚖️ Comparar Valores</a>
-    <div class="description">Use para comparar valores de 2 planilhas</div>
+  <!-- Conteúdo da Aba Outros -->
+  <div id="outros" class="tab-content">
+    <div class="link-card">
+      <a href="https://impvalores.vercel.app/" target="_blank">📊 Importar Valores</a>
+      <div class="description">Use para preparar a planilha para importar no sistema</div>
+    </div>
+    <div class="link-card">
+      <a href="https://comparavalores.vercel.app/" target="_blank">⚖️ Comparar Valores</a>
+      <div class="description">Use para comparar valores de 2 planilhas</div>
+    </div>
+    <div class="link-card">
+      <a href="https://sysprodata.vercel.app/" target="_blank">🏛️ SysproData</a>
+      <div class="description">Para importar Sysprodata em txt</div>
+    </div>
+    <div class="link-card">
+      <a href="https://meusiope.vercel.app/" target="_blank">🏛️ Siope Ajustador</a>
+      <div class="description">Siope Ajustador de 0,01 e Qualificação</div>
+    </div>
   </div>
 
-  <div class="link-card">
-    <a href="https://meuaf.vercel.app/" target="_blank">📑 AF x FP</a>
-    <div class="description">Use para ver os valores entre AF e FP</div>
-  </div>
+  <!-- Rodapé -->
+  <footer>
+    2025 © <a href="https://bio.diogofn.com" target="_blank">@odiogofn</a>
+  </footer>
 
-  <div class="link-card">
-    <a href="https://passousim.vercel.app/" target="_blank">✅ Passou Sim</a>
-    <div class="description">Use para ver quem passou o sim</div>
-  </div>
-
-  <div class="link-card">
-    <a href="https://site-tce.vercel.app/" target="_blank">🏛️ Itens TCE</a>
-    <div class="description">Use para pegar código de item remuneratório</div>
-  </div>
-
- <div class="link-card">
-    <a href="https://geradorzipsim.vercel.app/" target="_blank">🏛️ Gerar Zip pro TCE</a>
-    <div class="description">Use para gerar o zip pra ser enviado direto ao TCE</div>
-  </div>
-
- <div class="link-card">
-    <a href="https://sysprodata.vercel.app/" target="_blank">🏛️ SysproData</a>
-    <div class="description">Para importar Sysprodata em txt</div>
-  </div>
-
- <div class="link-card">
-    <a href="https://geradorzipsim.vercel.app/" target="_blank">🏛️ Siope Ajustador </a>
-    <div class="description">Siope Ajustador de 0,01 e Qualificação</div>
-  </div>
-
- <div class="link-card">
-    <a href="https://buscacpfsim.vercel.app/" target="_blank">🏛️ Buscar CPF SIM</a>
-    <div class="description">Use para buscar o cpf ou um trecho do arquivo em varios arquivos de uma so vez.</div>
-  </div>
-
- <div class="link-card">
-    <a href="" target="_blank">🏛️ </a>
-    <div class="description">Legenda</div>
-  </div>
-
+  <script>
+    function openTab(tabId) {
+      // Esconde todos os conteúdos
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      // Remove "active" dos botões
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      // Ativa a aba clicada
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
 </body>
 </html>
